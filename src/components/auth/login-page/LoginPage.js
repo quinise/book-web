@@ -19,7 +19,7 @@ const LoginPage = () => {
   return (
     <>
       { user ?
-        <Navigate to={'/feed'} /> 
+        <Navigate replace to={'/feed'} /> 
        :
         <Container className='text-center'>
           <Row>

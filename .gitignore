@@ -6,7 +6,6 @@
 .pnp.js
 
 # Firebase configurations
-/src/firebase/FirebaseConfigs.js
 /src/config/firebase.jsx
 
 

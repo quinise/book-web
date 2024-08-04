@@ -1,6 +1,6 @@
-
 import React from 'react';
-import LoginPage from './components/auth/login/LoginPage';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import LoginPage from './components/auth/login-page/LoginPage';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import Feed from './pages/feed/Feed';
@@ -8,25 +8,32 @@ import NoMatch from './pages/noMatch/NoMatch';
 import Profile from './pages/profile/Profile';
 
 import { Route, Routes } from "react-router-dom";
-import PrivateRoutes from './components/auth/utils/PrivateRoutes';
-import { AuthProvider } from "./contexts/AuthProvider";
+import { ProtectedRoute } from './components/auth/utils/ProtectedRoute';
+import { auth } from "./config/firebase";
 
-function App() {
+const App = () => {
+  const [user] = useAuthState(auth);
+
   return (
-    <AuthProvider>
-      {" "}
+    <>
       <Header />
       <Routes>
-        <Route element={<PrivateRoutes />}>
-          {" "}
-          <Route path='/profile' element={<Profile />}/>
-          <Route path='/feed' element={<Feed />}/>
-        </Route>
-        <Route  path='*' element={<NoMatch />}/>
-        <Route path='/' element={<LoginPage />}/>
+        <Route path='/profile' element={
+          <ProtectedRoute user={user}>
+            <Profile />
+          </ProtectedRoute>  
+        } />
+        <Route path='/feed' element={
+          <ProtectedRoute user={user}>
+            <Feed />
+          </ProtectedRoute>
+        } />
+        <Route  path='*' element={<NoMatch />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/' element={<LoginPage />} />
       </Routes>
       <Footer />
-    </AuthProvider>
+    </>
   );
 }
 

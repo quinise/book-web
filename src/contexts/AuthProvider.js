@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   };
   const logout = () => {
     setToken(null);
+    return <Navigate replace to='/' />
   };
   const isAuthenticated = !!token;
   return (

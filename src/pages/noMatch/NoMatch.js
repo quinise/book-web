@@ -2,7 +2,7 @@ import React from 'react';
 
 const NoMatch = () => {
   return (
-    <h1>404 Not Found</h1>
+    <p className='display-1 my-5 text-center'>404 Not Found</p>
   )
 }
 
