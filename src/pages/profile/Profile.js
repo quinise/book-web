@@ -1,8 +1,13 @@
 import React from 'react';
+import { Container, Row } from "react-bootstrap";
 
 const Profile = () => {
   return (
-    <div>User Profile</div>
+    <Container>
+      <Row>
+        <p className='display-1 my-5 text-center '>Profile</p>
+      </Row>
+    </Container>
   )
 }
 

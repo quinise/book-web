@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Navigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
@@ -23,12 +23,12 @@ const Header = () => {
               ?
               <>
                 <Nav className="ml-auto">
-                  <Nav.Link as={Link} to="/profile" className="nav-link">User Profile</Nav.Link>
+                  <Nav.Link as={Link} to="/profile" className="nav-link">Profile</Nav.Link>
                 </Nav>
                 <Nav className="ml-auto">
-                  <Nav.Link as={Link} to="/feed" className="nav-link">User Feed</Nav.Link>
+                  <Nav.Link as={Link} to="/feed" className="nav-link">Feed</Nav.Link>
                 </Nav>
-                <button onClick={() => { handleLogout() }} className='text-sm text-blue-600 underline'>Logout</button>
+                <Button onClick={() => { handleLogout() }} className='text-sm text-blue-600 underline'>Logout</Button>
               </>
               :
               <>

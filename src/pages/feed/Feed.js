@@ -9,9 +9,9 @@ const Feed = () => {
   return (
     <Container>
       <Row> 
-        <h1>
-          <strong>Hello</strong> { user.displayName ? user.displayName : user.email }
-        </h1>
+        <p className="display-1 my-5 text-center">
+          <strong>Hello</strong>, { user.displayName ? user.displayName : user.email }
+        </p>
       </Row>
     </Container>
   )
