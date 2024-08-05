@@ -7,7 +7,7 @@ const Feed = () => {
   const [user] = useAuthState(auth);
 
   return (
-    <Container>
+    <Container className='pb-5'>
       <Row> 
         <p className="display-1 my-5 text-center">
           <strong>Hello</strong>, { user.displayName ? user.displayName : user.email }

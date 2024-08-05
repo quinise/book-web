@@ -5,7 +5,7 @@ import SettingsComponent from './Settings';
 
 const Profile = () => {
   return (
-    <Container>
+    <Container className='pb-5'>
       <Row>
         <p className='display-1 my-5 text-center'>Profile</p>
       </Row>
