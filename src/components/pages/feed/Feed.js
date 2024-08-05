@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from "../../config/firebase";
+import { auth } from "../../../config/firebase";
 
 const Feed = () => {
   const [user] = useAuthState(auth);
