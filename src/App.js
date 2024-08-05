@@ -1,11 +1,11 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import LoginPage from './components/auth/login-page/LoginPage';
 import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
-import Feed from './pages/feed/Feed';
-import NoMatch from './pages/noMatch/NoMatch';
-import Profile from './pages/profile/Profile';
+import Feed from './components/pages/feed/Feed';
+import LoginPage from './components/pages/login-page/LoginPage';
+import NoMatch from './components/pages/noMatch/NoMatch';
+import Profile from './components/pages/profile/Profile';
 
 import { Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from './components/auth/utils/ProtectedRoute';
