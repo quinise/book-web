@@ -13,10 +13,10 @@ const Feed = () => {
           <strong>Hello</strong>, { user.displayName ? user.displayName : user.email }
         </p>
       </Row>
-      <Row>
+      <Row className="sm-w-100">
         <Col></Col>
         <Col>
-          <Form>
+          <Form> 
             <Row md={2}>
               <Col sm={3}>
                 <Form.Control className="w-100 mr-1" type="text" placeholder="Search books" />
@@ -47,7 +47,7 @@ const Feed = () => {
       </Col>
       <Col></Col>
       </Row>
-      <Row >
+      <Row className="mx-5">
         <Card>
           <Card.Header as="h4">Recommended</Card.Header>
           <Card.Body>
@@ -58,7 +58,7 @@ const Feed = () => {
           </Card.Body>
         </Card>
       </Row>
-      <Row  className="my-5">
+      <Row className="my-5 mx-5">
         <Card>
           <Card.Header as="h4">History</Card.Header>
           <Card.Body>
