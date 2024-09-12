@@ -8,7 +8,7 @@ import NoMatch from './components/pages/noMatch/NoMatch';
 import Profile from './components/pages/profile/Profile';
 
 import { Route, Routes } from "react-router-dom";
-import { ProtectedRoute } from './components/auth/utils/ProtectedRoute';
+import { ProtectedRoute } from './components/utils/ProtectedRoute';
 import { auth } from "./config/firebase";
 
 const App = () => {

@@ -1,11 +1,24 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from "../../../config/firebase";
+import BookSearchList from "../../BookCard";
 
 const Feed = () => {
   const [user] = useAuthState(auth);
+  const [search,  setSearch] = useState("");
+  const [bookSearchData, setBookSearchData] = useState([]);
+  const searchBook = (e) => {
+    e.preventDefault();
 
+    axios.get('https://www.googleapis.com/books/v1/volumes?q='+search+'&key=KEY')
+    .then(response => 
+      setBookSearchData(response.data.items)
+      // console.log(response.data.items) 
+    )
+    .catch(error => console.log(error));
+  }
   return (
     <Container className='pb-5'>
       <Row> 
@@ -16,18 +29,25 @@ const Feed = () => {
       <Row className="sm-w-100">
         <Col></Col>
         <Col>
-          <Form> 
+          <Form onSubmit={searchBook}> 
             <Row md={2}>
               <Col sm={3}>
-                <Form.Control className="w-100 mr-1" type="text" placeholder="Search books" />
+                <Form.Control className="w-100 mr-1" id="bookSearch" type="text" placeholder="Search books" 
+                onChange={e => setSearch(e.target.value)}
+                />
               </Col>
               <Col sm={3}>
-                <Button variant="primary" type="submit">Submit</Button>
+                <Button variant="primary" type='submit' value="Submit">Search</Button>
               </Col>
             </Row>
           </Form>
         </Col>
         <Col></Col>
+      </Row>
+      <Row>
+        {
+          <BookSearchList book={bookSearchData} />
+        }
       </Row>
       <Row>
         <Col></Col>
