@@ -8,6 +8,8 @@
 # Firebase configurations
 /src/config/firebase.jsx
 
+# Node environmental variables
+.env
 
 # testing
 /coverage

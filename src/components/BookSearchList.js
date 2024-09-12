@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+
 import { Card } from "react-bootstrap";
+import BookViewModal from "./BookViewModal";
 
 const BookSearchList = ({book}) => {
+  const [show, setShow] = useState(false);
+  const [bookItem, setItem] = useState();
+
   return (
     <>
       {
@@ -9,7 +14,7 @@ const BookSearchList = ({book}) => {
           let thumbnail = item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
           return (
             <>
-              <Card className="my-5 mx-auto" style={{ width: '18rem' }}>
+              <Card className="my-5 mx-auto" onClick={() => {setShow(true); setItem(item)}} style={{ width: '18rem' }}>
               <Card.Img variant="top" src={thumbnail} alt="" />
               <Card.Body>
                 <Card.Title>{item.volumeInfo.title}</Card.Title>
@@ -21,6 +26,7 @@ const BookSearchList = ({book}) => {
                 <Card.Link href={item.volumeInfo.canonicalVolumeLink}>Listen to this text</Card.Link>
               </Card.Body>
             </Card>
+            <BookViewModal show={show} item={bookItem} onClose={() => setShow(false)}/>
             </>
           )
         })

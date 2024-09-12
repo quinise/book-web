@@ -1,24 +1,27 @@
 import axios from "axios";
+import 'dotenv/config';
 import React, { useState } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from "../../../config/firebase";
-import BookSearchList from "../../BookCard";
+import BookSearchList from "../../BookSearchList";
 
 const Feed = () => {
   const [user] = useAuthState(auth);
   const [search,  setSearch] = useState("");
   const [bookSearchData, setBookSearchData] = useState([]);
+  const googleBooksApiKey = process.env.REACT_APP_GOOGLE_BOOKS_API_KEY;
   const searchBook = (e) => {
     e.preventDefault();
 
-    axios.get('https://www.googleapis.com/books/v1/volumes?q='+search+'&key=KEY')
+    axios.get('https://www.googleapis.com/books/v1/volumes?q='+search+'&key='+googleBooksApiKey+'&maxResults=40')
     .then(response => 
       setBookSearchData(response.data.items)
-      // console.log(response.data.items) 
+      // TESTING:console.log(response.data.items) 
     )
     .catch(error => console.log(error));
   }
+
   return (
     <Container className='pb-5'>
       <Row> 
